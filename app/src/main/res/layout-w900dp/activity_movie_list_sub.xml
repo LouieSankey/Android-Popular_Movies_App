@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+
+              android:baselineAligned="false"
+              android:divider="?android:attr/dividerHorizontal"
+              android:orientation="horizontal"
+              android:showDividers="middle"
+              tools:context=".MainActivity"
+    >
+
+    <!--
+
+    First fragment inflates the gridview, same fragment as found in activity_main_layout_sub for small screens
+    -->
+
+   <!-- <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/main_activity_header"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"/>-->
+
+    <GridView xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/gridview"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+
+              android:columnWidth="90dp"
+              android:numColumns="3"
+              android:verticalSpacing="0dp"
+              android:horizontalSpacing="0dp"
+              android:stretchMode="columnWidth"
+              android:gravity="center"
+              android:name="com.example.louissankey.masterdetail.MovieListFragment"
+              android:layout_below="@+id/main_activity_header"
+              android:layout_weight="1"
+              />
+
+
+    //if != null, mTwoPane... so dynamic fragment
+
+    <FrameLayout
+        android:id="@+id/movie_detail_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"/>
+
+</LinearLayout>
+
+
+
+
+<!--
+    <GridView xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/gridview"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:columnWidth="90dp"
+              android:numColumns="auto_fit"
+              android:verticalSpacing="10dp"
+              android:horizontalSpacing="10dp"
+              android:stretchMode="columnWidth"
+              android:gravity="center"
+              android:layout_below="@+id/main_activity_header"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/main_activity_header"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"/>-->
+
+
+
