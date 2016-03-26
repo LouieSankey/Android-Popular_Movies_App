@@ -41,4 +41,7 @@
     <string name="title_movie_list">Movies</string>
     <string name="title_movie_detail">Movie Detail</string>
     <string name="share_trailer">Share Trailer</string>
+    <string name="release">Release:</string>
+    <string name="add">Add</string>
+    <string name="favorite">Favorite:</string>
 </resources>

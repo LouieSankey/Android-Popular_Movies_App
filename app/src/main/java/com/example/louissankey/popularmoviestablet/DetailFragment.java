@@ -1,10 +1,16 @@
 package com.example.louissankey.popularmoviestablet;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
@@ -31,18 +37,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-/**
- * A fragment representing a single Movie detail screen.
- * This fragment is either contained in a {@link MainActivity}
- * in two-pane mode (on tablets) or a {@link DetailActivity}
- * on handsets.
- */
 public class DetailFragment extends Fragment {
-    /**
-     * The fragment argument representing the item ID that this fragment
-     * represents.
-     */
-    public static final String ARG_ITEM_ID = "item_id";
 
 
     @Bind(R.id.title_details)
@@ -66,6 +61,7 @@ public class DetailFragment extends Fragment {
     @Bind(R.id.releaseDateTextView)
     TextView releaseDateTextView;
 
+
     public static final String TAG = DetailFragment.class.getSimpleName();
     public static final String MOVIE_TRAILER_KEY = "MOVIE_TRAILER_KEY";
 
@@ -83,7 +79,7 @@ public class DetailFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setHasOptionsMenu(true);
 
         Bundle extras = getArguments();
         mMovieId = extras.getInt(MainActivity.MOVIE_ID);
@@ -93,24 +89,16 @@ public class DetailFragment extends Fragment {
         mMovieReleaseDate = extras.getString(MainActivity.RELEASE_DATE);
         mMovieVoteAverage = extras.getDouble(MainActivity.MOVIE_VOTE_AVERAGE);
         mIsChecked = extras.getBoolean(MainActivity.IS_CHECKED);
-        Log.v("detailsActivity", extras.getString("MOVIE_TITLE"));
-
-
-      /*  if (getArguments().containsKey(ARG_ITEM_ID)) {
-            // Load the dummy content specified by the fragment
-            // arguments. In a real-world scenario, use a Loader
-            // to load content from a content provider.
-            mItem = DummyContent.ITEM_MAP.get(getArguments().getString(ARG_ITEM_ID));
 
             Activity activity = this.getActivity();
-            Toolbar appBarLayout = (Toolbar) activity.findViewById(R.id.toolbar);
+            Toolbar appBarLayout = (Toolbar) activity.findViewById(R.id.detail_toolbar);
             if (appBarLayout != null) {
-                appBarLayout.setTitle(mItem.content);
+
+                appBarLayout.setTitle(appBarLayout.getTitle());
+
             }
-        }*/
 
     }
-
 
 
     @Override
@@ -135,6 +123,7 @@ public class DetailFragment extends Fragment {
 
 
         titleDetailsTextView.setText(mMovieTitle);
+
         overveiewDetailsTextView.setText(mMovieOverview);
         votesDetailsTextView.setText(NumberFormat.getInstance().format(mMovieVoteAverage));
         releaseDateTextView.setText(mMovieReleaseDate);
@@ -281,6 +270,19 @@ public class DetailFragment extends Fragment {
             }
         });
 
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        // TODO Add your menu entries here
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.details_menu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        return super.onOptionsItemSelected(item);
     }
 
 }

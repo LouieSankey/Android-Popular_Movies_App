@@ -25,21 +25,40 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"/>-->
 
-    <GridView xmlns:android="http://schemas.android.com/apk/res/android"
-              android:id="@+id/gridview"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/main_activity_header"
+            android:textSize="20sp"
+            android:gravity="center_horizontal"
+            android:background="@color/material_grey_600"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
 
-              android:columnWidth="90dp"
-              android:numColumns="3"
-              android:verticalSpacing="0dp"
-              android:horizontalSpacing="0dp"
-              android:stretchMode="columnWidth"
-              android:gravity="center"
-              android:name="com.example.louissankey.masterdetail.MovieListFragment"
-              android:layout_below="@+id/main_activity_header"
-              android:layout_weight="1"
-              />
+        <GridView xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:id="@+id/gridview"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+
+                  android:columnWidth="90dp"
+                  android:numColumns="3"
+                  android:verticalSpacing="0dp"
+                  android:horizontalSpacing="0dp"
+                  android:stretchMode="columnWidth"
+                  android:gravity="center"
+                  android:name="com.example.louissankey.masterdetail.MovieListFragment"
+                  android:layout_below="@+id/main_activity_header"
+
+
+            />
+    </RelativeLayout>
+
+
 
 
     //if != null, mTwoPane... so dynamic fragment
