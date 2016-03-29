@@ -1,4 +1,4 @@
-package com.example.louissankey.popularmoviestablet;
+package com.example.louissankey.popularmoviestablet.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +14,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.example.louissankey.popularmoviestablet.BuildConfig;
+import com.example.louissankey.popularmoviestablet.fragment.DetailFragment;
+import com.example.louissankey.popularmoviestablet.R;
 import com.example.louissankey.popularmoviestablet.database.MoviesDatabaseHandler;
 import com.example.louissankey.popularmoviestablet.model.Movie;
 import com.example.louissankey.popularmoviestablet.model.MoviePosterAdapter;
@@ -47,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
     public static final String MOVIE_OVERVIEW = "MOVIE_OVERVIEW";
     public static final String MOVIE_VOTE_AVERAGE = "MOVIE_VOTE_AVERAGE";
     public static final String MOVIE_ID = "MOVIE_ID";
-    public static final String FAVORITE_MOVIES = "FAVORITE_MOVIES";
     public static final String RELEASE_DATE = "RELEASE_DATE";
     public static final String IS_CHECKED = "IS_CHECKED";
 
@@ -59,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
     private String jsonData;
     private MoviePosterAdapter moviePosterAdapter;
 
-    //provided so when user updates favorites they can navigate directly back to "favorites" via back button and see update via onActivityResult method
+    //used with onActivityResult() so when user updates favorites they can navigate directly back and see "favorites" updated
     private int mSettingForResult;
     private boolean mTwoPane;
 
@@ -232,8 +234,7 @@ public class MainActivity extends AppCompatActivity {
     //todo: may not need own method
     private List<Movie> getFavoriteMoviesList() {
         MoviesDatabaseHandler db = new MoviesDatabaseHandler(this, null, null, 1);
-        List<Movie> movies = db.getAllMovies();
-        return movies;
+        return db.getAllMovies();
     }
 
     @Override

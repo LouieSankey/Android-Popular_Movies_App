@@ -7,7 +7,7 @@
         android:id="@+id/trailer_header_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Trailer"
+        android:text="@string/Trailer"
         android:textSize="18sp"
         android:layout_centerHorizontal="true"/>
 

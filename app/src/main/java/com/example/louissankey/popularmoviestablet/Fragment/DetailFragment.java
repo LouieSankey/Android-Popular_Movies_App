@@ -1,10 +1,9 @@
-package com.example.louissankey.popularmoviestablet;
+package com.example.louissankey.popularmoviestablet.fragment;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,6 +17,10 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.louissankey.popularmoviestablet.activity.DetailActivity;
+import com.example.louissankey.popularmoviestablet.activity.MainActivity;
+import com.example.louissankey.popularmoviestablet.BuildConfig;
+import com.example.louissankey.popularmoviestablet.R;
 import com.example.louissankey.popularmoviestablet.database.MoviesDatabaseHandler;
 import com.example.louissankey.popularmoviestablet.model.Movie;
 import com.squareup.picasso.Picasso;
@@ -53,13 +56,14 @@ public class DetailFragment extends Fragment {
     @Bind(R.id.reviews_textview)
     TextView reviewsTextView;
     @Bind(R.id.review_header_label)
-    TextView reviewsHeaderLAbel;
+    TextView reviewsHeaderLabel;
     @Bind(R.id.author_label)
     TextView authorLabel;
     @Bind(R.id.favorite_checkBox)
     CheckBox favoriteCheckbox;
     @Bind(R.id.releaseDateTextView)
     TextView releaseDateTextView;
+
 
 
     public static final String TAG = DetailFragment.class.getSimpleName();
@@ -145,6 +149,7 @@ public class DetailFragment extends Fragment {
             }
         });
 
+
         showMovieTrailerFragment();
         showReviews();
 
@@ -166,6 +171,7 @@ public class DetailFragment extends Fragment {
             @Override
             public void onFailure(Call call, IOException e) {
                 e.printStackTrace();
+                reviewsHeaderLabel.setText(R.string.reviews_offline);
             }
 
             @Override
@@ -186,7 +192,7 @@ public class DetailFragment extends Fragment {
 
                             try {
 
-                                reviewsHeaderLAbel.setText(R.string.reviews);
+                                reviewsHeaderLabel.setText(R.string.reviews);
                                 authorLabel.setText(R.string.author);
                                 authorNameTextView.setText(reviewObject.getString("author"));
                                 reviewsTextView.setText(reviewObject.getString("content"));
@@ -252,11 +258,13 @@ public class DetailFragment extends Fragment {
                             args.putString(MOVIE_TRAILER_KEY, movieTrailerKey);
                             fragment.setArguments(args);
 
-                            //todo: on slow connection user may navigate back before commit and crash app
-                            FragmentManager manager = getFragmentManager();
-                            manager.beginTransaction()
-                                    .replace(R.id.frame_layout, fragment)
-                                    .commit();
+                            //make sure that detailsActivity is still in forground and then add movie trailer fragment
+                            if(getActivity() instanceof DetailActivity) {
+                                FragmentManager manager = getFragmentManager();
+                                manager.beginTransaction()
+                                        .replace(R.id.frameLayout, fragment)
+                                        .commit();
+                            }
 
                             break;
 

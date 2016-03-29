@@ -1,4 +1,4 @@
-package com.example.louissankey.popularmoviestablet;
+package com.example.louissankey.popularmoviestablet.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.louissankey.popularmoviestablet.BuildConfig;
+import com.example.louissankey.popularmoviestablet.R;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerSupportFragment;

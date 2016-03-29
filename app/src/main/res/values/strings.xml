@@ -44,4 +44,6 @@
     <string name="release">Release:</string>
     <string name="add">Add</string>
     <string name="favorite">Favorite:</string>
+    <string name="Trailer">Trailer</string>
+    <string name="reviews_offline">Currently offline.  \nCannot view trailers or reviews.</string>
 </resources>

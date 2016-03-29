@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
@@ -10,7 +9,7 @@
               android:divider="?android:attr/dividerHorizontal"
               android:orientation="horizontal"
               android:showDividers="middle"
-              tools:context=".MainActivity"
+              tools:context=".activity.MainActivity"
     >
 
     <!--
@@ -60,8 +59,6 @@
 
 
 
-
-    //if != null, mTwoPane... so dynamic fragment
 
     <FrameLayout
         android:id="@+id/movie_detail_container"
